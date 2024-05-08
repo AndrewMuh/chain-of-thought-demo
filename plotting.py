@@ -10,8 +10,8 @@ def plot_gsm8k():
     plt.figure(figsize=(10, 6))
 
     # Plot data points
-    plt.scatter(sizes, no_cot_accuracies, color='blue', label='No COT')
-    plt.scatter(sizes, cot_accuracies, color='red', label='COT')
+    plt.scatter(sizes, no_cot_accuracies, color='blue', label='No CoT')
+    plt.scatter(sizes, cot_accuracies, color='red', label='CoT')
 
     # Plot trend lines
     plt.plot(sizes, no_cot_accuracies, color='blue', linestyle='-')
@@ -39,8 +39,8 @@ def plot_stratqa():
     plt.figure(figsize=(10, 6))
 
     # Plot data points
-    plt.scatter(sizes, no_cot_accuracies, color='blue', label='No COT')
-    plt.scatter(sizes, cot_accuracies, color='red', label='COT')
+    plt.scatter(sizes, no_cot_accuracies, color='blue', label='No CoT')
+    plt.scatter(sizes, cot_accuracies, color='red', label='CoT')
 
     # Plot trend lines
     plt.plot(sizes, no_cot_accuracies, color='blue', linestyle='-')
@@ -68,8 +68,8 @@ def plot_in_domain():
     plt.figure(figsize=(10, 6))
 
     # Plot data points
-    plt.scatter(sizes, no_cot_accuracies, color='blue', label='No COT')
-    plt.scatter(sizes, cot_accuracies, color='red', label='COT')
+    plt.scatter(sizes, no_cot_accuracies, color='blue', label='No CoT')
+    plt.scatter(sizes, cot_accuracies, color='red', label='CoT')
 
     # Plot trend lines
     plt.plot(sizes, no_cot_accuracies, color='blue', linestyle='-')
@@ -97,8 +97,8 @@ def plot_out_domain():
     plt.figure(figsize=(10, 6))
 
     # Plot data points
-    plt.scatter(sizes, no_cot_accuracies, color='blue', label='No COT')
-    plt.scatter(sizes, cot_accuracies, color='red', label='COT')
+    plt.scatter(sizes, no_cot_accuracies, color='blue', label='No CoT')
+    plt.scatter(sizes, cot_accuracies, color='red', label='CoT')
 
     # Plot trend lines
     plt.plot(sizes, no_cot_accuracies, color='blue', linestyle='-')
