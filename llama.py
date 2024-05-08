@@ -5,7 +5,7 @@ os.environ["TRANSFORMERS_CACHE"] = (
     "/mnt/storage/maxenis/yoruba_english/chain-of-thought-demo/transformers_cache"
 )
 
-from transformers import pipeline
+from transformers import pipeline, BitsAndBytesConfig
 from transformers.pipelines.pt_utils import KeyDataset
 
 import requests
@@ -33,7 +33,7 @@ pipe = pipeline(
         "torch_dtype": torch.bfloat16,
         "use_auth_token": HUGGING_FACE_API_KEY,
     },
-    device_map="sequential",
+    device_map="balanced_low_0",
     batch_size=BATCH_SIZE,
 )
 
@@ -100,20 +100,22 @@ pipe.tokenizer.padding_side = "left"
 
 df = pd.read_csv("data_with_prompts.csv")
 dataset = datasets.Dataset.from_pandas(df)
-with open("llama_70B_outputs_no_cot.txt", "w+", buffering=1) as f:
+with open("llama_70B_outputs_cot.txt", "w+", buffering=1) as f:
     i = 0
+    start = time.time()
     for output in pipe(
-        KeyDataset(dataset, "no_cot"),
+        KeyDataset(dataset, "cot"),
         batch_size=BATCH_SIZE,
-        max_new_tokens=256,
+        max_new_tokens=128,
         eos_token_id=terminators,
         do_sample=True,
         temperature=0.6,
         top_p=0.9,
-        return_text=False,
+        return_full_text=False,
     ):
         if i > BATCH_SIZE:
             break
+        f.write(f"{time.time() - start}\n")
         f.write(f"{output}\n")
         i += 1
 
