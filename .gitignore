@@ -1,7 +1,6 @@
 train_jobs/
 logs/
 .env
-*.csv
 *.txt
 train.sh
 transformers_cache/*
